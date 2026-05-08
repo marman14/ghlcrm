@@ -1,11 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Bot, Calendar, Check, MessageSquare, Phone, Sparkles, Workflow, Zap } from "lucide-react";
+import { ArrowRight, Bot, Calendar, Check, MessageSquare, Phone, Workflow, Zap, Users, BarChart3, Globe, Sparkles } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "GHLCRM — All-in-one CRM, Marketing & Automation" },
-      { name: "description", content: "Capture leads, automate marketing, and close more deals with GHLCRM. Sub-accounts, AI, pipelines and more." },
+      { title: "GHLCRM — The AI-powered business operating system" },
+      { name: "description", content: "All the tools you need to capture, nurture and close new leads into bookings, sales, reviews and repeat customers." },
     ],
   }),
   component: Index,
@@ -15,7 +15,6 @@ function Index() {
   return (
     <>
       <Hero />
-      <LogoStrip />
       <Features />
       <SubAccounts />
       <Testimonials />
@@ -26,76 +25,113 @@ function Index() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-hero">
-      <div className="absolute inset-0 grid-pattern opacity-40" />
-      <div className="relative mx-auto max-w-7xl px-6 py-24 md:py-32">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/60 px-4 py-1.5 text-xs font-medium text-muted-foreground">
-            <Sparkles className="h-3.5 w-3.5 text-primary" />
-            Built for agencies & growing businesses
+    <section className="relative overflow-hidden bg-hero pb-32 pt-20 md:pt-28">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 md:grid-cols-[1.05fr_1fr]">
+        <div>
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium backdrop-blur">
+            <Zap className="h-4 w-4" style={{ color: "oklch(0.78 0.16 235)" }} />
+            Power up your business with AI
           </span>
-          <h1 className="mt-6 text-5xl font-bold leading-[1.05] md:text-7xl">
-            The all-in-one <span className="text-gradient">CRM platform</span> your business deserves
+          <h1 className="mt-6 text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl">
+            The AI-powered<br />business operating<br />system
           </h1>
-          <p className="mt-6 text-lg text-muted-foreground md:text-xl">
-            GHLCRM brings your funnels, automations, calls, SMS, email and pipelines under one roof — with sub-accounts to manage unlimited clients.
+          <p className="mt-6 max-w-lg text-lg text-white/75">
+            All the tools you need to capture, nurture and close new leads into bookings, sales, reviews and repeat customers.
           </p>
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-            <Link to="/pricing" className="inline-flex items-center gap-2 rounded-xl bg-gradient-primary px-6 py-3 text-base font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-105">
-              Start your plan <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link to="/features" className="inline-flex items-center gap-2 rounded-xl border border-border bg-card/60 px-6 py-3 text-base font-medium hover:bg-card">
-              See features
+          <div className="mt-10">
+            <Link to="/pricing" className="inline-flex items-center gap-3 rounded-full btn-dark px-6 py-3.5 text-base font-medium">
+              Start 14 Day Free Trial
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-background">
+                <ArrowRight className="h-4 w-4" />
+              </span>
             </Link>
           </div>
-          <p className="mt-4 text-xs text-muted-foreground">No credit card required • Cancel anytime</p>
         </div>
 
-        <div className="relative mx-auto mt-20 max-w-5xl">
-          <div className="rounded-2xl border border-border bg-gradient-card p-2 shadow-elegant">
-            <div className="rounded-xl bg-background/60 p-6">
-              <div className="grid gap-4 md:grid-cols-3">
-                {[
-                  { label: "Active leads", value: "12,438", trend: "+24%" },
-                  { label: "Conversations", value: "3,902", trend: "+18%" },
-                  { label: "Revenue this month", value: "$184,210", trend: "+31%" },
-                ].map((s) => (
-                  <div key={s.label} className="rounded-lg border border-border/60 bg-card/60 p-4">
-                    <div className="text-xs text-muted-foreground">{s.label}</div>
-                    <div className="mt-1 font-display text-2xl font-bold">{s.value}</div>
-                    <div className="mt-1 text-xs text-primary">{s.trend} vs last month</div>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-4 grid gap-2">
-                {["New lead • Sarah from Acme just booked a call", "Automation • Welcome sequence triggered (38)", "Pipeline • Deal moved to Won — $4,200"].map((row) => (
-                  <div key={row} className="flex items-center gap-3 rounded-lg border border-border/40 bg-background/40 px-4 py-3 text-sm">
-                    <span className="h-2 w-2 rounded-full bg-primary shadow-glow" />
-                    <span className="text-muted-foreground">{row}</span>
-                  </div>
-                ))}
-              </div>
+        <div className="relative">
+          <DashboardMock />
+        </div>
+      </div>
+
+      <div className="relative mx-auto mt-20 max-w-7xl px-6">
+        <div className="grid gap-4 md:grid-cols-4">
+          {[
+            { v: "7M+", l: "AI Voice Calls" },
+            { v: "7.3B", l: "Leads Generated" },
+            { v: "179M", l: "Appointments Booked" },
+            { v: "$5.2B+", l: "Sales Facilitated in 2025" },
+          ].map((s) => (
+            <div key={s.l} className="stat-card rounded-2xl p-6 text-center">
+              <div className="font-display text-4xl font-bold tracking-tight">{s.v}</div>
+              <div className="mt-2 text-xs uppercase tracking-widest text-white/70">{s.l}</div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-function LogoStrip() {
-  const brands = ["Acme Co", "Northwind", "Globex", "Initech", "Umbrella", "Stark Inc"];
+function DashboardMock() {
   return (
-    <section className="border-y border-border/60 bg-card/30 py-10">
-      <div className="mx-auto max-w-7xl px-6">
-        <p className="text-center text-xs uppercase tracking-widest text-muted-foreground">Trusted by 25,000+ teams worldwide</p>
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-12 gap-y-4 opacity-70">
-          {brands.map((b) => (
-            <span key={b} className="font-display text-lg font-semibold text-muted-foreground">{b}</span>
+    <div className="relative rotate-[-2deg] rounded-2xl border border-white/15 bg-card/90 shadow-elegant backdrop-blur">
+      <div className="flex items-center gap-1.5 border-b border-white/10 px-4 py-3">
+        <span className="h-2.5 w-2.5 rounded-full bg-red-400/80" />
+        <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/80" />
+        <span className="h-2.5 w-2.5 rounded-full bg-green-400/80" />
+        <div className="ml-3 text-xs text-white/50">app.ghlcrm.com / dashboard</div>
+      </div>
+      <div className="grid grid-cols-[140px_1fr] gap-0">
+        <aside className="border-r border-white/10 p-3 text-xs">
+          {["Launch Pad", "Dashboard", "Conversations", "Calendars", "Contacts", "Opportunities", "Payments", "Marketing", "Automation", "Sites", "Reputation", "Reporting"].map((i, idx) => (
+            <div key={i} className={`flex items-center gap-2 rounded-md px-2 py-1.5 ${idx === 10 ? "bg-white/10 text-white" : "text-white/60"}`}>
+              <span className="h-1.5 w-1.5 rounded-full bg-white/40" />
+              {i}
+            </div>
           ))}
+        </aside>
+        <div className="p-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="text-[10px] uppercase tracking-wider text-white/50">Reputation Management</div>
+              <div className="font-display text-base font-semibold">Overview</div>
+            </div>
+            <button className="rounded-md bg-gradient-blue px-3 py-1 text-[10px] font-medium text-white">Send Review Request</button>
+          </div>
+          <div className="mt-3 grid grid-cols-3 gap-2">
+            {[
+              { l: "Invites Goal", v: "1.4K", t: "+40%" },
+              { l: "Reviews Received", v: "1,210", t: "-10% vs last" },
+              { l: "Sentiment", v: "900 / 300", t: "+100%" },
+            ].map((c) => (
+              <div key={c.l} className="rounded-lg border border-white/10 bg-white/[0.03] p-2.5">
+                <div className="text-[9px] text-white/50">{c.l}</div>
+                <div className="mt-1 font-display text-base font-bold">{c.v}</div>
+                <div className="mt-0.5 text-[9px]" style={{ color: "oklch(0.78 0.16 235)" }}>{c.t}</div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-3 grid grid-cols-2 gap-2">
+            <div className="rounded-lg border border-white/10 bg-white/[0.03] p-3">
+              <div className="text-[10px] text-white/50">Average Ratings</div>
+              <div className="mt-2 flex items-end gap-1">
+                {[40, 60, 80, 50, 30].map((h, i) => (
+                  <div key={i} className="w-3 rounded-sm bg-gradient-blue" style={{ height: `${h}px` }} />
+                ))}
+              </div>
+            </div>
+            <div className="rounded-lg border border-white/10 bg-white/[0.03] p-3">
+              <div className="text-[10px] text-white/50">Online Listings</div>
+              <div className="mt-2 flex justify-center">
+                <div className="relative h-16 w-16 rounded-full" style={{ background: "conic-gradient(oklch(0.65 0.20 245) 0 60%, oklch(0.78 0.16 235) 60% 80%, oklch(0.30 0.05 245) 80% 100%)" }}>
+                  <div className="absolute inset-2 rounded-full bg-card" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -105,26 +141,34 @@ const features = [
   { icon: Calendar, title: "Smart scheduling", desc: "Calendars, round-robin & reminders that fill your pipeline." },
   { icon: Phone, title: "Built-in calling", desc: "Two-way calls, call tracking & recording out of the box." },
   { icon: Bot, title: "AI assistant", desc: "Reply, summarize and qualify leads with built-in AI." },
-  { icon: Zap, title: "Funnels & sites", desc: "Beautiful funnels, websites and forms with no code." },
+  { icon: Globe, title: "Funnels & sites", desc: "Beautiful funnels, websites and forms with no code." },
+  { icon: BarChart3, title: "Pipelines & deals", desc: "Visual Kanban with revenue forecasting." },
+  { icon: Users, title: "Sub-accounts", desc: "Unlimited client workspaces under one master login." },
+  { icon: Sparkles, title: "White-label", desc: "Your domain, your logo, your mobile app." },
 ];
 
 function Features() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24">
-      <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-4xl font-bold md:text-5xl">Everything you need. <span className="text-gradient">Nothing you don't.</span></h2>
-        <p className="mt-4 text-muted-foreground">Replace 8+ tools with one platform built for marketers, agencies and sales teams.</p>
-      </div>
-      <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {features.map((f) => (
-          <div key={f.title} className="group rounded-2xl border border-border bg-gradient-card p-6 transition-all hover:border-primary/40 hover:shadow-glow">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-primary shadow-soft">
-              <f.icon className="h-6 w-6 text-primary-foreground" />
+    <section className="bg-background py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-2xl text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/70">
+            All-in-one platform
+          </span>
+          <h2 className="mt-5 text-4xl font-bold md:text-5xl">Everything you need.<br /><span className="text-gradient">Nothing you don't.</span></h2>
+          <p className="mt-4 text-muted-foreground">Replace 8+ tools with one platform built for marketers, agencies and sales teams.</p>
+        </div>
+        <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {features.map((f) => (
+            <div key={f.title} className="group rounded-2xl border border-white/10 bg-card p-6 transition-all hover:border-primary/40 hover:shadow-glow">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-blue">
+                <f.icon className="h-5 w-5 text-white" />
+              </div>
+              <h3 className="mt-5 text-lg font-semibold">{f.title}</h3>
+              <p className="mt-1.5 text-sm text-muted-foreground">{f.desc}</p>
             </div>
-            <h3 className="mt-5 text-lg font-semibold">{f.title}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">{f.desc}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -132,10 +176,10 @@ function Features() {
 
 function SubAccounts() {
   return (
-    <section className="bg-card/30 py-24">
+    <section className="bg-background py-24">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 md:grid-cols-2">
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary-foreground">
             Agency-ready
           </span>
           <h2 className="mt-4 text-4xl font-bold md:text-5xl">Create unlimited <span className="text-gradient">sub-accounts</span></h2>
@@ -150,17 +194,17 @@ function SubAccounts() {
               "Granular roles & permissions per user",
             ].map((i) => (
               <li key={i} className="flex items-start gap-3">
-                <Check className="mt-0.5 h-5 w-5 text-primary" />
+                <Check className="mt-0.5 h-5 w-5" style={{ color: "oklch(0.78 0.16 235)" }} />
                 <span className="text-sm">{i}</span>
               </li>
             ))}
           </ul>
-          <Link to="/pricing" className="mt-8 inline-flex items-center gap-2 rounded-xl bg-gradient-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow">
+          <Link to="/pricing" className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-blue px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow">
             Get the Ultimate plan <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="rounded-2xl border border-border bg-gradient-card p-6 shadow-elegant">
-          <div className="text-xs text-muted-foreground">Sub-accounts</div>
+        <div className="rounded-2xl border border-white/10 bg-card p-6 shadow-elegant">
+          <div className="text-xs uppercase tracking-widest text-white/50">Sub-accounts</div>
           <div className="mt-3 space-y-2">
             {[
               ["Bright Dental Co", "Active", "$2,140 MRR"],
@@ -168,9 +212,9 @@ function SubAccounts() {
               ["Lumen Med Spa", "Active", "$3,650 MRR"],
               ["Forge Fitness", "Trial", "—"],
             ].map(([name, status, mrr]) => (
-              <div key={name} className="flex items-center justify-between rounded-xl border border-border/60 bg-background/40 px-4 py-3">
+              <div key={name} className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-primary text-sm font-bold text-primary-foreground">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-blue text-sm font-bold text-white">
                     {name.charAt(0)}
                   </div>
                   <div>
@@ -195,18 +239,20 @@ function Testimonials() {
     { quote: "The unified inbox alone is worth the price. Our reply times dropped 80%.", name: "Sasha Kim", role: "Head of Sales, Lumen" },
   ];
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24">
-      <h2 className="text-center text-4xl font-bold md:text-5xl">Loved by <span className="text-gradient">teams that ship</span></h2>
-      <div className="mt-12 grid gap-6 md:grid-cols-3">
-        {items.map((t) => (
-          <div key={t.name} className="rounded-2xl border border-border bg-gradient-card p-6">
-            <p className="text-sm leading-relaxed text-foreground/90">"{t.quote}"</p>
-            <div className="mt-6">
-              <div className="text-sm font-semibold">{t.name}</div>
-              <div className="text-xs text-muted-foreground">{t.role}</div>
+    <section className="bg-background py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <h2 className="text-center text-4xl font-bold md:text-5xl">Loved by <span className="text-gradient">teams that ship</span></h2>
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {items.map((t) => (
+            <div key={t.name} className="rounded-2xl border border-white/10 bg-card p-6">
+              <p className="text-sm leading-relaxed text-foreground/90">"{t.quote}"</p>
+              <div className="mt-6">
+                <div className="text-sm font-semibold">{t.name}</div>
+                <div className="text-xs text-muted-foreground">{t.role}</div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -214,13 +260,12 @@ function Testimonials() {
 
 function CTA() {
   return (
-    <section className="mx-auto max-w-7xl px-6 pb-24">
-      <div className="relative overflow-hidden rounded-3xl border border-border bg-gradient-card p-12 text-center shadow-elegant">
-        <div className="absolute inset-0 grid-pattern opacity-30" />
-        <div className="relative">
+    <section className="bg-background pb-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="relative overflow-hidden rounded-3xl border border-white/10 p-12 text-center shadow-elegant" style={{ background: "var(--gradient-hero)" }}>
           <h2 className="text-4xl font-bold md:text-5xl">Ready to scale with <span className="text-gradient">GHLCRM?</span></h2>
-          <p className="mx-auto mt-4 max-w-xl text-muted-foreground">Start with our Ultimate plan from just $49 — sub-accounts included.</p>
-          <Link to="/pricing" className="mt-8 inline-flex items-center gap-2 rounded-xl bg-gradient-primary px-7 py-3 text-base font-semibold text-primary-foreground shadow-glow">
+          <p className="mx-auto mt-4 max-w-xl text-white/80">Start with our Ultimate plan from just $49 — sub-accounts included.</p>
+          <Link to="/pricing" className="mt-8 inline-flex items-center gap-2 rounded-full btn-dark px-7 py-3 text-base font-medium">
             View pricing <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
