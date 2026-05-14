@@ -40,7 +40,7 @@ function Hero() {
           </p>
           <div className="mt-10">
             <Link to="/pricing" className="inline-flex items-center gap-3 rounded-full btn-dark px-6 py-3.5 text-base font-medium">
-              Start 14 Day Free Trial
+              View plans & get started
               <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-background">
                 <ArrowRight className="h-4 w-4" />
               </span>

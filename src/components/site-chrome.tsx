@@ -40,11 +40,8 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <Link to="/contact" className="rounded-full btn-dark px-5 py-2 text-sm font-medium">
-            Login
-          </Link>
           <Link to="/pricing" className="rounded-full bg-gradient-blue px-5 py-2 text-sm font-semibold text-primary-foreground shadow-glow">
-            Start 14-day trial
+            Get started
           </Link>
         </div>
       </div>
