@@ -79,8 +79,8 @@ function PricingPage() {
   const [showOffer, setShowOffer] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const handleYearlyClick = (e: React.MouseEvent) => {
-    e.preventDefault();
+  const handleYearlyClick = () => {
+    // Show downsell modal — the link still opens Stripe in a new tab
     setShowOffer(true);
   };
 
@@ -132,7 +132,10 @@ function PricingPage() {
                 </span>
               </div>
               {p.id === "yearly" ? (
-                <button
+                <a
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={handleYearlyClick}
                   className={`mt-6 block w-full rounded-xl px-5 py-3 text-center text-sm font-semibold transition-transform hover:scale-[1.02] ${
                     p.featured
@@ -141,7 +144,7 @@ function PricingPage() {
                   }`}
                 >
                   {p.cta}
-                </button>
+                </a>
               ) : (
                 <a
                   href={p.href}
