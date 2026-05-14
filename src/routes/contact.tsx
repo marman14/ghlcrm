@@ -26,8 +26,8 @@ function Contact() {
           </p>
           <div className="mt-10 space-y-5">
             {[
-              { icon: Mail, label: "Email", value: "hello@ghlcrm.com" },
-              { icon: MessageCircle, label: "Live chat", value: "Available 24/7 inside the app" },
+              { icon: Mail, label: "Email", value: "help@ghlcrm.store" },
+              { icon: MessageCircle, label: "WhatsApp", value: "+44 7828 702783" },
               { icon: MapPin, label: "HQ", value: "Remote-first • global team" },
             ].map((i) => (
               <div key={i.label} className="flex items-center gap-4">
