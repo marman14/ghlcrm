@@ -10,6 +10,7 @@ import {
 
 import appCss from "../styles.css?url";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
+import { WhatsAppFloat } from "@/components/whatsapp-float";
 
 function NotFoundComponent() {
   return (
