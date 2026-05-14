@@ -95,6 +95,7 @@ function RootComponent() {
         <SiteHeader />
         <main className="flex-1"><Outlet /></main>
         <SiteFooter />
+        <WhatsAppFloat />
       </div>
     </QueryClientProvider>
   );
