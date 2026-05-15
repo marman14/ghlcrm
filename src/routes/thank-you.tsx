@@ -52,7 +52,7 @@ function ThankYouPage() {
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <a
-                href="https://app.gohighlevel.com/signup"
+                href="https://guaranteedcrm.io/crm"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.02]"
