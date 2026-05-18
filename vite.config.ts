@@ -1,15 +1,21 @@
-// Vercel deployment: uses TanStack Start's native Nitro Vercel preset.
-// Nitro outputs to .vercel/output/ which Vercel auto-detects.
-// Do NOT add @cloudflare/vite-plugin here — it breaks Vercel builds.
-import { defineConfig } from "@tanstack/react-start/config";
-import tailwindcss from "@tailwindcss/vite";
-import tsConfigPaths from "vite-tsconfig-paths";
+import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import { defineConfig } from 'vite'
+import viteReact from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+import { nitro } from 'nitro/vite'
 
 export default defineConfig({
-  vite: {
-    plugins: [tailwindcss(), tsConfigPaths()],
+  resolve: {
+    tsconfigPaths: true,
   },
-  server: {
-    preset: "vercel",
-  },
-});
+  plugins: [
+    tailwindcss(),
+    tanstackStart({
+      srcDirectory: 'src',
+    }),
+    viteReact(),
+    nitro({
+      preset: 'vercel',
+    }),
+  ],
+})
